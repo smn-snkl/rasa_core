@@ -835,8 +835,9 @@ class Form(Event):
     """
     type_name = "form"
 
-    def __init__(self, name, timestamp=None):
+    def __init__(self, name, trigger_message=None, timestamp=None):
         self.name = name
+        self.trigger_message = trigger_message
         super(Form, self).__init__(timestamp)
 
     def __str__(self):
@@ -852,22 +853,24 @@ class Form(Event):
             return self.name == other.name
 
     def as_story_string(self):
-        props = json.dumps({"name": self.name})
+        props = json.dumps(
+            {"name": self.name, "trigger_message": self.trigger_message})
         return "{name}{props}".format(name=self.type_name, props=props)
 
     @classmethod
     def _from_story_string(cls, parameters):
         """Called to convert a parsed story line into an event."""
         return [Form(parameters.get("name"),
+                     parameters.get("trigger_message"),
                      parameters.get("timestamp"))]
 
     def as_dict(self):
         d = super(Form, self).as_dict()
-        d.update({"name": self.name})
+        d.update({"name": self.name, "trigger_message": self.trigger_message})
         return d
 
     def apply_to(self, tracker: 'DialogueStateTracker') -> None:
-        tracker.change_form_to(self.name)
+        tracker.change_form_to(self.name, self.trigger_message)
 
 
 class FormValidation(Event):
