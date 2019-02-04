@@ -854,14 +854,13 @@ class Form(Event):
 
     def as_story_string(self):
         props = json.dumps(
-            {"name": self.name, "trigger_message": self.trigger_message})
+            {"name": self.name})
         return "{name}{props}".format(name=self.type_name, props=props)
 
     @classmethod
     def _from_story_string(cls, parameters):
         """Called to convert a parsed story line into an event."""
         return [Form(parameters.get("name"),
-                     parameters.get("trigger_message"),
                      parameters.get("timestamp"))]
 
     def as_dict(self):
