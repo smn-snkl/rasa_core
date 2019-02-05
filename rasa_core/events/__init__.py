@@ -860,8 +860,9 @@ class Form(Event):
     @classmethod
     def _from_story_string(cls, parameters):
         """Called to convert a parsed story line into an event."""
-        return [Form(parameters.get("name"),
-                     parameters.get("timestamp"))]
+        return [Form(
+            name=parameters.get("name"),
+            timestamp=parameters.get("timestamp"))]
 
     def as_dict(self):
         d = super(Form, self).as_dict()
