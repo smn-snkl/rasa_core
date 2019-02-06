@@ -26,7 +26,11 @@ class TemplatedNaturalLanguageGenerator(NaturalLanguageGenerator):
                              ) -> Optional[Dict[Text, Any]]:
         """Select random template for the utter action from available ones."""
 
-        if utter_action in self.templates:
+        channel_utter_action = "{}.{}".format(output_channel, utter_action)
+
+        if channel_utter_action in self.templates:
+            return np.random.choice(self.templates[channel_utter_action])
+        elif utter_action in self.templates:
             return np.random.choice(self.templates[utter_action])
         else:
             return None
