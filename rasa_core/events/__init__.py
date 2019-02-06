@@ -853,8 +853,7 @@ class Form(Event):
             return self.name == other.name
 
     def as_story_string(self):
-        props = json.dumps(
-            {"name": self.name})
+        props = json.dumps({"name": self.name})
         return "{name}{props}".format(name=self.type_name, props=props)
 
     @classmethod
