@@ -7,6 +7,11 @@ This project adheres to `Semantic Versioning`_ starting with version 0.2.0.
 [0.13.2] - 2019-02-06
 ^^^^^^^^^^^^^^^^^^^^^
 
+Added
+-----
+- added quick reply representation for command-line output
+- added option to specify custom button type for Facebook buttons
+
 Changed
 -------
 - ``MessageProcessor`` now also passes ``message_id`` to the interpreter
