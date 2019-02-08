@@ -17,6 +17,15 @@ Changed
 - ``MessageProcessor`` now also passes ``message_id`` to the interpreter
   when parsing with a ``RasaNLUHttpInterpreter``
 
+
+[0.13.2] - 2019-02-06
+^^^^^^^^^^^^^^^^^^^^^
+
+Changed
+-------
+- ``MessageProcessor`` now also passes ``message_id`` to the interpreter
+  when parsing with a ``RasaNLUHttpInterpreter``
+
 [0.13.1] - 2019-01-29
 ^^^^^^^^^^^^^^^^^^^^^
 
